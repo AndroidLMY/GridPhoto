@@ -12,18 +12,26 @@ import com.huantansheng.easyphotos.EasyPhotos;
 import com.huantansheng.easyphotos.models.album.entity.Photo;
 import com.lmy.gridphotolibrary.bean.GridSelectBean;
 import com.lmy.gridphotolibrary.view.GridSelectPhotoView;
+import com.lmy.gridphotolibrary.view.GridShowPhotoView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private GridSelectPhotoView gridSelect;
-
+    private GridShowPhotoView gridShowPhotoView;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        gridShowPhotoView = findViewById(R.id.grid_show);
+        List<GridSelectBean> gridSelectBeans = new ArrayList<>();
+        gridSelectBeans.add(new GridSelectBean("http://g.hiphotos.baidu.com/image/pic/item/0d338744ebf81a4c87a3add4d52a6059252da61e.jpg", false));
+        gridSelectBeans.add(new GridSelectBean("http://g.hiphotos.baidu.com/image/pic/item/0d338744ebf81a4c87a3add4d52a6059252da61e.jpg", false));
+        gridSelectBeans.add(new GridSelectBean("http://g.hiphotos.baidu.com/image/pic/item/0d338744ebf81a4c87a3add4d52a6059252da61e.jpg", false));
+        gridShowPhotoView.setDataList(gridSelectBeans);
         gridSelect = findViewById(R.id.grid_select);
         gridSelect.setAddPhotoClickListener(surplusNumber -> {
             EasyPhotos.createAlbum(this,
@@ -33,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
                     .start(101);
         });
     }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

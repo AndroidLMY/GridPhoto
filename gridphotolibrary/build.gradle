@@ -1,5 +1,4 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.android.library'
 apply plugin: 'com.novoda.bintray-release'
 android {
     compileSdkVersion 30
@@ -10,7 +9,6 @@ android {
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
     }
@@ -45,7 +43,7 @@ publish {
     groupId = 'com.lmy'         //作为组织的唯一标示 传入包名即可
     artifactId = 'gridphoto'     //作为工程的唯一标示 填入welcome就行 需要保证同一个groupId下不能有两个相同的artifactId
     publishVersion = '1.0.0'    //当前开源库的版本号
-    desc = '引导页闪屏页广告页面的封装'//开源项目的描述
+    desc = '九宫格图片显示和选择封装'//开源项目的描述
     repoName = "GridPhoto" //你的仓库名称，没有填写默认仓库是maven//这也是很多人上传仓库不对名问题最多情况，
-    website = 'https://github.com/AndroidLMY/Welcome.git' //github 托管地址
+    website = 'https://github.com/AndroidLMY/GridPhoto.git' //github 托管地址
 }

@@ -10,6 +10,7 @@ import androidx.viewpager.widget.PagerAdapter;
 
 
 import com.lmy.gridphotolibrary.glide.Glide;
+import com.lmy.gridphotolibrary.view.photoview.PhotoView;
 
 import java.util.List;
 
@@ -33,7 +34,7 @@ public class MyImageAdapter extends PagerAdapter {
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
         String url = imageUrls.get(position);
-        ImageView photoView = new ImageView(activity);
+        PhotoView photoView = new PhotoView(activity);
         Glide.with(activity)
                 .load(url)
                 .into(photoView);
