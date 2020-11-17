@@ -30,6 +30,11 @@ public class GridShowPhotoAdapter extends RecyclerView.Adapter {
     private List<GridSelectBean> fileListBeans;
     private List<String> photoList;
     private List<String> uuid;
+    private ImageView.ScaleType scaleType = ImageView.ScaleType.FIT_XY;
+
+    public void setImageScaleType(ImageView.ScaleType scaleTypes) {
+        this.scaleType = scaleTypes;
+    }
 
     public GridShowPhotoAdapter(Context context, List<GridSelectBean> fileListBeans) {
         this.context = context;
@@ -50,9 +55,8 @@ public class GridShowPhotoAdapter extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-
+        ((ViewHolder) holder).ivCover.setScaleType(scaleType);
         Glide.with(context).load(fileListBeans.get(position).getFileurl()).into(((ViewHolder) holder).ivCover);
-
         if (fileListBeans.get(position).isVideo()) {
             ((ViewHolder) holder).ivPlayer.setVisibility(View.VISIBLE);
         } else {
@@ -102,11 +106,6 @@ public class GridShowPhotoAdapter extends RecyclerView.Adapter {
             ivDelete.setVisibility(View.GONE);
         }
     }
-
-
-
-
-
 
 
 }

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.lmy.gridphotolibrary.glide.gifdecoder.GifDecoder;
@@ -31,15 +32,19 @@ public class MainActivity extends AppCompatActivity {
         gridSelectBeans.add(new GridSelectBean("http://g.hiphotos.baidu.com/image/pic/item/0d338744ebf81a4c87a3add4d52a6059252da61e.jpg", false));
         gridSelectBeans.add(new GridSelectBean("http://g.hiphotos.baidu.com/image/pic/item/0d338744ebf81a4c87a3add4d52a6059252da61e.jpg", false));
         gridSelectBeans.add(new GridSelectBean("http://g.hiphotos.baidu.com/image/pic/item/0d338744ebf81a4c87a3add4d52a6059252da61e.jpg", false));
-        gridShowPhotoView.setDataList(gridSelectBeans);
+        gridShowPhotoView
+                .setImageScaleType(ImageView.ScaleType.FIT_CENTER)
+                .setDataList(gridSelectBeans);
         gridSelect = findViewById(R.id.grid_select);
-        gridSelect.setAddPhotoClickListener(surplusNumber -> {
-            EasyPhotos.createAlbum(this,
-                    false, GlideEngine.getInstance())
-                    //参数说明：上下文，是否显示相机按钮，[配置Glide为图片加载引擎](https://github.com/HuanTanSheng/EasyPhotos/wiki/12-%E9%85%8D%E7%BD%AEImageEngine%EF%BC%8C%E6%94%AF%E6%8C%81%E6%89%80%E6%9C%89%E5%9B%BE%E7%89%87%E5%8A%A0%E8%BD%BD%E5%BA%93)
-                    .setCount(surplusNumber)
-                    .start(101);
-        });
+        gridSelect
+                .setImageScaleType(ImageView.ScaleType.FIT_XY)
+                .setAddPhotoClickListener(surplusNumber -> {
+                    EasyPhotos.createAlbum(this,
+                            false, GlideEngine.getInstance())
+                            //参数说明：上下文，是否显示相机按钮，[配置Glide为图片加载引擎](https://github.com/HuanTanSheng/EasyPhotos/wiki/12-%E9%85%8D%E7%BD%AEImageEngine%EF%BC%8C%E6%94%AF%E6%8C%81%E6%89%80%E6%9C%89%E5%9B%BE%E7%89%87%E5%8A%A0%E8%BD%BD%E5%BA%93)
+                            .setCount(surplusNumber)
+                            .start(101);
+                });
     }
 
     @Override

@@ -34,12 +34,17 @@ public class GridSelectPhotoAdapter extends RecyclerView.Adapter {
     private final static int FOOT_TYPE = 1;//尾布局
     private List<String> photoList;
     private int maxNumber;
+    private ImageView.ScaleType scaleType = ImageView.ScaleType.FIT_XY;
 
     public GridSelectPhotoAdapter(Context context, List<GridSelectBean> fileListBeans, int maxNumber) {
         this.context = context;
         this.fileListBeans = fileListBeans;
         this.maxNumber = maxNumber;
     }
+    public void setImageScaleType(ImageView.ScaleType scaleTypes) {
+        this.scaleType = scaleTypes;
+    }
+
 
     @Override
     public int getItemViewType(int position) {
@@ -83,6 +88,7 @@ public class GridSelectPhotoAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         if (holder.getItemViewType() == CONTENT_TYPE) {
+            ((ViewHolder) holder).ivCover.setScaleType(scaleType);
             Glide.with(context).load(fileListBeans.get(position).getFileurl()).into(((ViewHolder) holder).ivCover);
             ((ViewHolder) holder).ivDelete.setOnClickListener(new View.OnClickListener() {
                 @Override

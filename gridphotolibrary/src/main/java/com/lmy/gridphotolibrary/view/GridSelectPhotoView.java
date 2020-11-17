@@ -5,6 +5,7 @@ import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import androidx.recyclerview.widget.DefaultItemAnimator;
@@ -41,6 +42,12 @@ public class GridSelectPhotoView extends RelativeLayout {
     private GridSelectPhotoAdapter adapter;
     private Context context;
     private List<GridSelectBean> fileListBeans = new ArrayList<>();
+    private ImageView.ScaleType scaleType = ImageView.ScaleType.FIT_XY;
+
+    public GridSelectPhotoView setImageScaleType(ImageView.ScaleType scaleType) {
+        this.scaleType = scaleType;
+        return this;
+    }
 
     public GridSelectPhotoView(Context context) {
         this(context, null);
@@ -70,7 +77,7 @@ public class GridSelectPhotoView extends RelativeLayout {
 
     private void initRecyclerview() {
         if (adapter == null) {
-            adapter = new GridSelectPhotoAdapter(context, fileListBeans,maxNumber);
+            adapter = new GridSelectPhotoAdapter(context, fileListBeans, maxNumber);
             adapter.setOnItemClickListener(number -> {
                 surplusNumber = number;
                 onAddPhotoClickListener.addPhotoVideo(surplusNumber);
@@ -82,15 +89,14 @@ public class GridSelectPhotoView extends RelativeLayout {
             helper.attachToRecyclerView(recyclerview);
             recyclerview.setAdapter(adapter);
         } else {
+            adapter.setImageScaleType(scaleType);
             adapter.notifyDataSetChanged();
         }
     }
 
-
     public List<GridSelectBean> getFileList() {
         return adapter.getFileList();
     }
-
 
 
     /**

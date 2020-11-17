@@ -15,8 +15,8 @@
         android:layout_margin="20dp"
         android:layout_marginTop="100dp"
         app:lineNumber="4"
-        app:maxNumber="8" />
-
+        app:maxNumber="8"
+        />
 
     <com.lmy.gridphotolibrary.view.GridShowPhotoView
         android:id="@+id/grid_show"
@@ -26,7 +26,6 @@
         android:layout_marginTop="100dp"
         app:lineNumber="4"
         />
-
 
     <TextView
         android:id="@+id/tv_btn_top"

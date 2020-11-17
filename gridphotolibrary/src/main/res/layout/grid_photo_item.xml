@@ -8,15 +8,18 @@
     android:layout_marginRight="5dp"
     android:layout_marginBottom="5dp"
     app:cardCornerRadius="5dp">
+
     <com.lmy.gridphotolibrary.view.SquareLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <ImageView
             android:id="@+id/iv_cover"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/white"
             android:scaleType="fitXY" />
+
         <ImageView
             android:id="@+id/iv_player"
             android:layout_width="30dp"
@@ -30,10 +33,10 @@
             android:id="@+id/iv_delete"
             android:layout_width="20dp"
             android:layout_height="20dp"
+            android:layout_alignParentRight="true"
             android:scaleType="fitXY"
             android:src="@drawable/ic_delete"
-            android:visibility="visible"
-            android:layout_alignParentRight="true" />
+            android:visibility="visible" />
     </com.lmy.gridphotolibrary.view.SquareLayout>
 
 

@@ -5,22 +5,18 @@ import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
-import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.ItemTouchHelper;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.lmy.gridphotolibrary.R;
-import com.lmy.gridphotolibrary.adapter.GridSelectPhotoAdapter;
 import com.lmy.gridphotolibrary.adapter.GridShowPhotoAdapter;
 import com.lmy.gridphotolibrary.bean.GridSelectBean;
 import com.lmy.gridphotolibrary.utils.RecyclerViewTieku;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -39,6 +35,8 @@ public class GridShowPhotoView extends RelativeLayout {
     private RecyclerViewTieku myItemDecoration;
     private GridShowPhotoAdapter adapter;
     private Context context;
+    private ImageView.ScaleType scaleType = ImageView.ScaleType.FIT_XY;
+
 
     private int linNumber;//一行显示几列
 
@@ -66,6 +64,11 @@ public class GridShowPhotoView extends RelativeLayout {
         initRecyclerview();
     }
 
+    public GridShowPhotoView setImageScaleType(ImageView.ScaleType scaleType) {
+        this.scaleType = scaleType;
+        return this;
+    }
+
     private void initRecyclerview() {
         if (adapter == null) {
             adapter = new GridShowPhotoAdapter(context, fileListBeans);
@@ -74,6 +77,7 @@ public class GridShowPhotoView extends RelativeLayout {
 //                recyclerview.setItemAnimator(new DefaultItemAnimator());
             recyclerview.setAdapter(adapter);
         } else {
+            adapter.setImageScaleType(scaleType);
             adapter.notifyDataSetChanged();
         }
     }
