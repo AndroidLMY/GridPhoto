@@ -85,6 +85,15 @@ public class GridShowPhotoView extends RelativeLayout {
     /**
      * 设置数据源
      */
+    public void setClearDataList(List<GridSelectBean> fileListBean) {
+        fileListBeans.clear();
+        this.fileListBeans.addAll(fileListBean);
+        initRecyclerview();
+    }
+
+    /**
+     * 设置数据源
+     */
     public void setDataList(List<GridSelectBean> fileListBean) {
         this.fileListBeans.addAll(fileListBean);
         initRecyclerview();
