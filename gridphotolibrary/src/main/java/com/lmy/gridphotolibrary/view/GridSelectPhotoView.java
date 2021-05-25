@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -75,6 +76,15 @@ public class GridSelectPhotoView extends RelativeLayout {
         initRecyclerview();
     }
 
+    public void clearAll() {
+        this.fileListBeans.clear();
+        initRecyclerview();
+    }
+
+    public int getSurplusNumber() {
+        return surplusNumber;
+    }
+
     private void initRecyclerview() {
         if (adapter == null) {
             adapter = new GridSelectPhotoAdapter(context, fileListBeans, maxNumber);
@@ -103,6 +113,9 @@ public class GridSelectPhotoView extends RelativeLayout {
      * 设置数据源
      */
     public GridSelectPhotoView setAddPhoto(GridSelectBean fileListBean) {
+        if (surplusNumber == 0) {
+            return this;
+        }
         this.fileListBeans.add(fileListBean);
         initRecyclerview();
         return this;
