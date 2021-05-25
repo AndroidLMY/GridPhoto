@@ -1,3 +1,2 @@
 include ':gridphotolibrary'
-include ':app'
 rootProject.name = "GridPhoto"
